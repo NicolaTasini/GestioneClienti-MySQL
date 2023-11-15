@@ -17,7 +17,7 @@ import java.util.Objects;
 @Table(name = "clienti")
 public class Cliente {
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     Long id;
 
     String nominativo;

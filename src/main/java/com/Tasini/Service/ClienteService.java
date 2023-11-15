@@ -24,8 +24,10 @@ public class ClienteService {
         return clienteRepo.findById(id);
     }
 
-    public Cliente saveOrUpdate(Cliente cliente) {
-        return clienteRepo.save(cliente);
+    public Optional<Cliente> saveOrUpdate(Cliente cliente) {
+        clienteRepo.save(cliente);
+        Optional<Cliente> opt = Optional.of(cliente);
+        return opt;
     }
 
     public void deleteById(Long id) {
@@ -34,19 +36,7 @@ public class ClienteService {
 
     public void deleteAll() {
         clienteRepo.deleteAll();
-    }
+    }  
 
-    public List<Cliente> GetClientiAfterDate(LocalDate date){
-        List<Cliente> clienti = clienteRepo.findAll();
-        for (Cliente cliente : clienti) {
-            if (cliente.getData_utlimo_acquisto().isBefore(date)) {
-                clienti.remove(cliente);
-            }
-        }
-        return clienti;
-        
-    }
-
-    
     
 }
